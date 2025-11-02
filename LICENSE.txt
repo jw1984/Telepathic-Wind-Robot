@@ -1,0 +1,23 @@
+Copyright (c) 2025 Jesse Wyer
+
+All rights reserved.
+
+This software project ("Telepathic Wind Robot") is provided for
+personal, educational, and non-commercial use only.
+
+You may:
+- View, fork, and learn from the source code for personal study.
+- Use the code in non-commercial, personal, or academic projects.
+
+You may not:
+- Sell, sublicense, or distribute this code or any derivative work
+  for commercial gain.
+- Incorporate any part of this code into a product, service, or
+  derivative work offered for sale or profit without a valid
+  commercial license from the author.
+
+Commercial licensing inquiries:
+✉️  Contact: wyerjess888@gmail.com
+
+Unauthorized commercial use of this work constitutes copyright
+infringement and may be subject to legal action.
