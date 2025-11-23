@@ -31,3 +31,5 @@ The author assumes **no liability** for injury, misuse, or property damage resul
 Always follow **laser, acoustic, and electrical safety guidelines** when building or demonstrating physical systems.
 
 ---
+
+This software/hardware is provided as‐is, no warranty of any kind, the author is not liable for damages.
