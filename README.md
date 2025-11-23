@@ -1,70 +1,132 @@
-# Telepathic-Immortal
-Cyber-mystic microphone analyzer that visualizes telepathic energy through sound and controls a robot to move and speak.
 
+✅ Revised README Legal & Safety Section (Corrected + Professional)
+📜 License
 
+Copyright © 2025 Jesse Wyer
 
+This project—including all source code, documentation, images, and conceptual materials—may be used and modified for personal or educational purposes only.
+Commercial use, resale, redistribution, or integration into a commercial product requires written permission and a paid license from the author.
 
+Contact for licensing: wyerjess888@gmail.com
 
+🤖 AI Assistance Notice
 
+Portions of the explanatory text and conceptual descriptions were created with assistance from OpenAI’s ChatGPT.
+All final creative content, implementation, design decisions, and intellectual property belong to Jesse Wyer.
 
+⚠️ Safety, Legal, and Regulatory Notice
 
-### 📜 License  
-Copyright © 2025 **Jesse Wyer**
+This project is an educational and experimental prototype. It is not a certified commercial device, scientific instrument, consumer product, or engineering-grade robotics platform.
 
-This project, including its source code, documentation, and conceptual materials, may be used and modified for **personal or educational purposes only**.  
-**Commercial use, resale, or inclusion in a commercial product** requires **written permission and a paid license** from the author.  
-Contact: wyerjess888@gmail.com
+Use of this software, conceptual framework, or any associated hardware is entirely at your own risk.
 
----
+Liability Disclaimer
 
-### 🤖 AI Assistance Disclaimer  
-Portions of the text, technical roadmap, and conceptual explanations were developed with the assistance of **OpenAI’s ChatGPT (model GPT-5)**.  
-All final creative content, implementation, and intellectual property belong to **Jesse Wyer**.
+This software/hardware is provided “as is,” without warranty of any kind, express or implied.
+The author assumes no liability for injury, harm, property damage, device malfunction, or legal consequences resulting from the use, modification, or operation of this project.
 
----
+🛠️ Hardware & Robotics Safety Requirements
 
-### ⚠️ Safety & Legal Notice  
-This project is an **educational and experimental prototype** created for research and learning purposes.  
-It is **not a certified commercial product or engineering device**.  
-Users must operate any hardware components (microphones, servos, ultrasonic or optical devices) **within safe exposure limits** and comply with **local regulations**.  
-The author assumes **no liability** for injury, misuse, or property damage resulting from the use or modification of this project.  
-Always follow **laser, acoustic, and electrical safety guidelines** when building or demonstrating physical systems.
+If you construct or operate a physical robot using this code or concept:
 
----
+Follow all electrical, mechanical, and acoustic safety guidelines.
 
-This software/hardware is provided as‐is, no warranty of any kind, the author is not liable for damages.
+Do not operate near people, pets, or property that may be harmed.
 
-Operating this robot is at your own risk; you must comply with local laws for airborne devices, robotics safety, etc.
+Ensure servos, motors, or flying components are secured and tested safely.
 
-Regulatory / physical device compliance
+If the robot flies, complies with applicable FAA rules for unmanned aircraft.
 
-If the robot flies, you may need to consider U.S. aviation / drone rules from Federal Aviation Administration (FAA) or state/local regulations for unmanned aerial vehicles.
+📡 Regulatory & Compliance Responsibilities
+1. Drone / Flying Robot Rules (U.S. FAA + Washington State)
 
-If the robot uses wireless transmissions, you may need to consider radio frequency / FCC rules.
+If your device lifts off the ground or moves autonomously:
 
-If it uses sensors, audio/microphones, telepathy claims, or your code interacts with human data: consider privacy laws (e.g., audio recordings might implicate state consent laws).
+You must comply with FAA Part 107 or recreational drone rules.
 
-You might want to check any state‐specific laws around robotics, unattended flying objects, surveillance/recording devices, or “living being” claims.
+Local city or county restrictions may apply in Washington State.
 
-If your project captures audio, video, or other human-subject data (even if experimental), you should add a notice: user is responsible for ensuring recordings are legal, proper consent is obtained, etc.
+Indoor flight does not eliminate liability for injuries or damages.
 
-If you distribute or allow others to use the system, you should include a privacy/disclaimer section in your README.
+2. Wireless Communication / FCC Rules
 
-Usage warning: “This project is experimental. Use at your own risk. The author is not liable for injury or damage.”
+If your project uses wireless transmitters, radios, Bluetooth, Wi-Fi, or RF components:
 
-Regulatory/Compliance reminder: “If you fly or use hardware in your jurisdiction you must comply with local drone/aircraft regulations and electronics/radio regulation.”
+Devices must conform to FCC Part 15 or other applicable radio regulations.
 
-Privacy warning: “If you record audio/video/data you are responsible for complying with applicable privacy laws and obtaining consent.”
+Modifying wireless transmission power may violate U.S. federal law.
 
-Scope disclaimer: “This is for educational/experimental use only. Not for commercial products, unless you obtain a separate license from the author.”
+3. Audio, Microphone, Telepathy, and Data Collection Laws
 
-If you handle exports (e.g., code that uses encryption or advanced hardware sensors), check U.S. export control laws. Although for typical hobby robotics this is unlikely a major issue, it may still be worth a note.
+If your robot or software listens to, records, analyzes, or transmits audio:
 
-Legal Advice Disclaimer:
-The information contained in this repository—including code, documentation, descriptions, theories, or conceptual explanations—is provided for general informational and educational purposes only. Nothing within this project constitutes legal advice, professional guidance, or regulatory certification.
+Washington State is a two-party consent state for audio recording.
 
-I am not a lawyer, and no attorney–client relationship is created by viewing, downloading, or using any part of this project.
-Laws and regulations vary significantly between jurisdictions and may change over time.
-Users are solely responsible for ensuring compliance with all applicable local, state, federal, and international laws—including but not limited to regulations relating to robotics, unmanned aircraft, wireless communication, data collection, audio recording, privacy, artificial intelligence, safety, and product design.
+Users must obtain explicit consent before capturing human voices.
 
-If you require legal advice or have specific legal questions about this project’s use, modification, or deployment, you must consult a qualified attorney licensed in your jurisdiction.
+Do not use the microphone in public or private spaces without permission.
+
+You are fully responsible for privacy, encryption, consent, and data security.
+
+(“Telepathic energy visualization” is treated as a conceptual or artistic term and is not a legally recognized data type.)
+
+4. Surveillance, Autonomous Behavior, and Ethics
+
+Projects that detect, track, follow, or interact with humans may fall under:
+
+state surveillance restrictions
+
+harassment / stalking laws
+
+trespass or nuisance statutes
+
+autonomous device safety expectations
+
+You are responsible for ensuring your usage does not violate any of the above.
+
+5. Export Control (U.S. EAR/ITAR)
+
+Although typical hobby robotics do not trigger export laws:
+
+high-frequency sensing
+
+autonomous navigation
+
+encryption
+
+advanced control systems
+
+could require export-control review for distribution outside the U.S.
+
+🔒 Privacy Notice
+
+If you use this project with audio, video, sensor, or motion-tracking systems:
+
+You must comply with all applicable privacy laws.
+
+You must inform and obtain consent from all affected individuals.
+
+You are solely responsible for how data is processed, stored, or transmitted.
+
+🧭 Legal Advice Disclaimer
+
+Nothing in this repository constitutes legal advice.
+I am not a lawyer, and viewing or using this project does not create an attorney–client relationship.
+
+Users must ensure compliance with all local, Washington State, U.S. federal, and international laws relating to:
+
+robotics and autonomous systems
+
+unmanned aircraft
+
+wireless communication
+
+privacy and data collection
+
+audio recording consent
+
+safety and product liability
+
+AI/algorithmic decision-making
+
+For legal questions, consult a qualified attorney licensed in your jurisdiction.
