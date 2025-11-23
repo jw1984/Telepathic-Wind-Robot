@@ -59,3 +59,7 @@ Privacy warning: “If you record audio/video/data you are responsible for compl
 Scope disclaimer: “This is for educational/experimental use only. Not for commercial products, unless you obtain a separate license from the author.”
 
 If you handle exports (e.g., code that uses encryption or advanced hardware sensors), check U.S. export control laws. Although for typical hobby robotics this is unlikely a major issue, it may still be worth a note.
+
+Disclaimer:
+I am not a lawyer, and nothing in this project, its documentation, or any associated explanations should be interpreted as legal advice. All information is provided for general educational and informational purposes only. Laws vary by location and situation, and legal requirements may change over time.
+For guidance on your specific circumstances, you should consult a qualified attorney licensed in your jurisdiction.
