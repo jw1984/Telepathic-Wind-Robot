@@ -43,3 +43,5 @@ If the robot flies, you may need to consider U.S. aviation / drone rules from Fe
 If the robot uses wireless transmissions, you may need to consider radio frequency / FCC rules.
 
 If it uses sensors, audio/microphones, telepathy claims, or your code interacts with human data: consider privacy laws (e.g., audio recordings might implicate state consent laws).
+
+You might want to check any state‐specific laws around robotics, unattended flying objects, surveillance/recording devices, or “living being” claims.
