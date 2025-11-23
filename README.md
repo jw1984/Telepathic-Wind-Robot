@@ -49,3 +49,11 @@ You might want to check any state‐specific laws around robotics, unattended fl
 If your project captures audio, video, or other human-subject data (even if experimental), you should add a notice: user is responsible for ensuring recordings are legal, proper consent is obtained, etc.
 
 If you distribute or allow others to use the system, you should include a privacy/disclaimer section in your README.
+
+Usage warning: “This project is experimental. Use at your own risk. The author is not liable for injury or damage.”
+
+Regulatory/Compliance reminder: “If you fly or use hardware in your jurisdiction you must comply with local drone/aircraft regulations and electronics/radio regulation.”
+
+Privacy warning: “If you record audio/video/data you are responsible for complying with applicable privacy laws and obtaining consent.”
+
+Scope disclaimer: “This is for educational/experimental use only. Not for commercial products, unless you obtain a separate license from the author.”
