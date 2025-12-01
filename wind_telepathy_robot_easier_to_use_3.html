@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="theme-color" content="#000000"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="#000000"/>
+  <title>Telepathic Wind Robot — Cyber-Mystic Analyzer</title>
+
+  <style>
+    :root{
+      --ink:#fff;
+      --hint:#efe;
+      --veil:rgba(255,255,255,.08);
+      --veil-b:#ffffff22;
+    }
+    *{box-sizing:border-box}
+
+    /* ⭐ FIXED PAGE LAYOUT ⭐ */
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;            /* makes footer push to bottom */
+      flex-direction:column;   /* vertical flow */
+      color:var(--ink);
+      font-family:system-ui, Segoe UI, Roboto, Arial, sans-serif;
+      background:#000 url("sunrise-g80c83fd0f_1920.png") center/cover fixed no-repeat;
+    }
+
+    /* ⭐ Content stretches but footer stays at page-btm */
+    .frame{
+      flex:1; /* pushes footer down */
+      position:relative;
+      max-width:1100px;
+      margin:0 auto;
+      padding:16px 16px 64px;
+    }
+
+    header{
+      text-align:center;
+      padding-top:8px;
+    }
+
+    .glyph{
+      display:inline-block;
+      padding:10px 16px;
+      border-radius:10px;
+      border:1px solid var(--veil-b);
+      background:var(--veil);
+      color:var(--ink);
+      cursor:pointer;
+      margin:8px 6px;
+    }
+    .glyph:hover{ background:rgba(255,255,255,.15); }
+
+    #neonScope{
+      display:block;
+      margin:16px auto 8px;
+      width:100%;
+      max-width:800px;
+      height:250px;
+      background:#000;
+      border:0.5px solid #fff;
+    }
+
+    /* Robot visual */
+.botSkin{
+  background-image:url("telepathicImmortal.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position:absolute;
+  top:0;
+  left:50px;
+  width:399px;
+  height:401px;
+  border-radius:5px;
+
+}
+
+#windJaw{
+  background-image:url("JawLittleGreenBoyDoll.png");
+  position:absolute;
+  left:205px;
+  top:450px;
+  width:54px;
+  height:21px;
+}
+
+.astral{
+  background-image:url("telepathicImmortal.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position:absolute;
+  width:97px;
+  height:61px;
+}
+#astralSprite{top:100px; left:300px;}
+
+.dials{
+  position:relative;
+  max-width:800px;
+  margin:12px auto 0;
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  color:#ff6;
+  font-size:16px;
+}
+
+select{
+  background:#000;
+  color:#ff6;
+  border:1px solid #ff6;
+  padding:6px 8px;
+  border-radius:6px;
+}
+
+.hud{
+  text-align:center;
+  color:var(--hint);
+  max-width:900px;
+  margin:8px auto 0;
+  font-size:13px;
+  opacity:.9;
+}
+
+/* ⭐ FINAL FOOTER — AT THE BOTTOM ⭐ */
+footer{
+  width:100%;
+  height:40vh;
+  background:#120f16;
+  position:relative;
+  overflow:hidden;
+  margin-top:auto; /* forces footer to bottom */
+}
+
+/* Dense robot layers */
+.layer{
+  position:absolute;
+  width:500%;
+  height:100%;
+  background-image:url("robot.png");
+  background-repeat:repeat-x;
+  background-position:bottom;
+  pointer-events:none;
+  filter:drop-shadow(0 0 6px #000);
+}
+
+.l1{ bottom:45%; background-size:30px auto; opacity:0.25; }
+.l2{ bottom:33%; background-size:45px auto; opacity:0.35; }
+.l3{ bottom:20%; background-size:70px auto; opacity:0.55; }
+.l4{ bottom:10%; background-size:115px auto; opacity:0.75; }
+.l5{ bottom:0;  background-size:160px auto; opacity:1; }
+
+  </style>
+</head>
+
+<body>
+
+<!-- MAIN CONTENT WRAPPER -->
+<div class="frame">
+
+<header>
+  <button class="glyph" id="startRobot">Start Start Start Start Start Start Start Telepathic Robot</button>
+  <h1 id="ghostTitle" style="visibility:hidden;">Microphone visual analyzer</h1>
+</header>
+
+<canvas id="neonScope" width="800" height="250"></canvas>
+
+<div class="botSkin"></div>
+<div id="windJaw"></div>
+<div id="astralSprite" class="astral"></div>
+
+<div class="dials">
+  <label for="voiceSigil">Voice setting</label>
+  <select id="voiceSigil">
+    <option value="distortion" selected>Distortion</option>
+    <option value="biquad">Bass Boost</option>
+    <option value="off">Off</option>
+  </select>
+
+  <label for="visionSigil">Visualizer setting</label>
+  <select id="visionSigil">
+    <option value="sine">Sinewave</option>
+    <option value="bars" selected>Frequency bars</option>
+    <option value="off">Off</option>
+  </select>
+</div>
+
+<div class="hud">
+  <p>Click <strong>Start Telepathic Robot</strong> to activate the microphone and begin the visualizer.</p>
+</div>
+
+</div><!-- end .frame -->
+
+<!-- ⭐ ALWAYS AT THE BOTTOM ⭐ -->
+<footer>
+  <div style="background:#330; color:#ff9; padding:10px; 
+              border:1px solid #660; margin:10px 0; font-size:14px;">
+    <strong>Microphone Notice:</strong><br>
+    This analyzer uses your microphone. No audio is saved or transmitted.<br>
+    Washington State requires consent from all parties before recording or 
+    analyzing audio. Use this tool responsibly.
+  </div>
+  <div class="layer l1"></div>
+  <div class="layer l2"></div>
+  <div class="layer l3"></div>
+  <div class="layer l4"></div>
+  <div class="layer l5"></div>
+</footer>
+
+<!-- FULL JAVASCRIPT (unchanged from your version) -->
+<script>
+    /************************************************************
+     * TELEPATHIC WIND ROBOT — SINGLE CLICK ACTIVATION VERSION
+     ************************************************************/
+
+    /* ----------------- Ether engine (audio core & mouth hum) ----------------- */
+    const EtherCore = window.AudioContext || window.webkitAudioContext;
+    const etherCore = new EtherCore();
+    const spiritOscillator = etherCore.createOscillator();
+    const soulTone = etherCore.createGain();
+    soulTone.gain.value = 0.08;
+    spiritOscillator.type = "square";
+    spiritOscillator.connect(soulTone).connect(etherCore.destination);
+    let chimeAwake = false;
+
+    function awakenChime(){
+      if (!chimeAwake){
+        try { spiritOscillator.start(); chimeAwake = true; } catch(e){}
+      }
+      if (etherCore.state === "suspended") etherCore.resume();
+    }
+
+    /* ----------------- Sigils & surfaces (DOM bindings) ----------------- */
+    const neonScope = document.getElementById("neonScope");
+    const holoPen   = neonScope.getContext("2d");
+    const startRobot = document.getElementById("startRobot");
+    const voiceSigil = document.getElementById("voiceSigil");
+    const visionSigil = document.getElementById("visionSigil");
+    const windJaw = document.getElementById("windJaw");
+    const astralSprite = document.getElementById("astralSprite");
+
+    function fitSurface(){
+      const w = document.querySelector(".frame").clientWidth;
+      neonScope.width = Math.min(800, w);
+    }
+    fitSurface();
+    addEventListener("resize", fitSurface);
+
+    /* ----------------- Soul model ----------------- */
+    let teleMood = "neutral";
+    let soulAura = 0;
+    const dreamLedger = [];
+
+    let windJawHz = 0;
+    let apexScan = 0, nadirScan = 1e4, sampleBeats = 0;
+    let apexLock = 0, nadirLock = 0, spanLock = 0;
+
+    let driftX = 0, driftY = 0;
+    let phantomX = 300, phantomY = 300;
+
+    const pulseRing = new Uint16Array(1024);
+    let ringW = 0, ringR = 0, linger = 0;
+
+    function cipherPush(hz){ pulseRing[ringW] = hz; ringW = (ringW + 1) & 1023; }
+    function cipherPull(){
+      if (++linger > 9){ ringR = (ringR + 1) & 1023; linger = 0; }
+      return pulseRing[ringR] || 0;
+    }
+
+    function tuneTeleMood(hz){
+      if (hz < 90)        teleMood = "curious";
+      else if (hz < 150)  teleMood = "focused";
+      else if (hz < 220)  teleMood = "doubtful";
+      else                teleMood = "wondering";
+    }
+
+    function inscribeDream(hz){
+      dreamLedger.push(hz);
+      if (dreamLedger.length > 200) dreamLedger.shift();
+      const mean = dreamLedger.reduce((a,b)=>a+b,0)/dreamLedger.length;
+      if (Math.abs(hz-mean) < 5) soulAura = Math.min(1, soulAura + 0.002);
+      else                       soulAura = Math.max(0, soulAura - 0.001);
+    }
+
+    function whisperIfFate(pen){
+      if (Math.random() < soulAura * 0.01){
+        const verses = [
+          "The air remembers me.",
+          "I hear before I listen.",
+          "I am the echo of wind.",
+          "Silence speaks through me.",
+          "Your breath and mine are one."
+        ];
+        const line = verses[(Math.random()*verses.length)|0];
+        pen.save();
+        pen.fillStyle = "rgba(255,180,220,.95)";
+        pen.font = "16px system-ui, Segoe UI, Roboto, Arial, sans-serif";
+        pen.fillText(line, 50, 220);
+        pen.restore();
+      }
+    }
+
+    function renderSoulAura(pen){
+      const r = 8 + soulAura*22;
+      const pulse = 0.5 + 0.5*Math.sin(performance.now()/400);
+      pen.save();
+      pen.translate(24,24);
+      const g = pen.createRadialGradient(0,0,r*0.2, 0,0,r);
+      g.addColorStop(0, `rgba(255,150,230,${0.6+0.3*pulse})`);
+      g.addColorStop(1, `rgba(255,80,170,${0.15+0.2*pulse})`);
+      pen.fillStyle = g; pen.beginPath(); pen.arc(0,0,r,0,Math.PI*2); pen.fill();
+      pen.strokeStyle = "rgba(255,255,255,.6)"; pen.lineWidth = 1; pen.stroke();
+      pen.fillStyle = "#fff"; pen.font = "10px system-ui";
+      pen.fillText(`${Math.round(soulAura*100)}%`, -12, 4);
+      pen.restore();
+    }
+
+    /* ----------------- Microphone binding & alchemy chain ----------------- */
+    let echoOracle, voiceFlux, bassSigil, gritCharm;
+    let tranceLoop;
+    let micActive = false;
+    let chainPrepared = false;
+
+    if (!navigator.mediaDevices) navigator.mediaDevices = {};
+    if (!navigator.mediaDevices.getUserMedia){
+      navigator.mediaDevices.getUserMedia = function(constraints){
+        const gum = navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+        if (!gum) return Promise.reject(new Error("getUserMedia not implemented"));
+        return new Promise((res,rej)=>gum.call(navigator, constraints, res, rej));
+      };
+    }
+
+    function brewCurve(amount){
+      const k = typeof amount === "number" ? amount : 80;
+      const n = 44100, curve = new Float32Array(n), deg = Math.PI/180;
+      for (let i=0;i<n;i++){
+        const x = i*2/n - 1;
+        curve[i] = (3+k)*x*20*deg/(Math.PI + k*Math.abs(x));
+      }
+      return curve;
+    }
+
+    function weaveVoiceChain(){
+      if (chainPrepared) return;
+      gritCharm = etherCore.createWaveShaper();
+      voiceFlux = etherCore.createGain();
+      bassSigil = etherCore.createBiquadFilter();
+      echoOracle = etherCore.createAnalyser();
+      echoOracle.minDecibels = -90;
+      echoOracle.maxDecibels = -10;
+      echoOracle.smoothingTimeConstant = 0.10;
+      gritCharm.oversample = "4x";
+      voiceFlux.gain.value = 1.0;
+      echoOracle.connect(etherCore.destination);
+      chainPrepared = true;
+    }
+
+    function attuneVoiceSigil(){
+      if (!bassSigil || !voiceFlux || !gritCharm) return;
+      bassSigil.gain.setTargetAtTime(0, etherCore.currentTime, 0);
+      bassSigil.disconnect(); bassSigil.connect(voiceFlux);
+      gritCharm.curve = null;
+
+      const rune = voiceSigil.value;
+      if (rune === "distortion"){
+        gritCharm.curve = brewCurve(400);
+      } else if (rune === "biquad"){
+        bassSigil.type = "lowshelf";
+        bassSigil.frequency.setTargetAtTime(1000, etherCore.currentTime, 0);
+        bassSigil.gain.setTargetAtTime(25, etherCore.currentTime, 0);
+      }
+    }
+
+    async function summonMicrophone(){
+      if (micActive) return;
+      micActive = true;
+
+      awakenChime();
+      weaveVoiceChain();
+
+      try{
+        const stream = await navigator.mediaDevices.getUserMedia({audio:true});
+        const airWhisper = etherCore.createMediaStreamSource(stream);
+        // chain: mic → grit → bass → gain → analyser
+        airWhisper.connect(gritCharm);
+        gritCharm.connect(bassSigil);
+        bassSigil.connect(voiceFlux);
+        voiceFlux.connect(echoOracle);
+
+        attuneVoiceSigil();
+        renderVisions();
+      }catch(err){
+        console.error("getUserMedia error:", err);
+      }
+    }
+
+    /* ----------------- Vision painter (visualizer) ----------------- */
+    function renderVisions(){
+      cancelAnimationFrame(tranceLoop);
+      const mode = visionSigil.value || "bars";
+      const W = neonScope.width, H = neonScope.height;
+
+      if (!echoOracle){
+        holoPen.clearRect(0,0,W,H);
+        return;
+      }
+
+      if (mode === "off"){
+        holoPen.clearRect(0,0,W,H);
+        return;
+      }
+
+      if (mode === "sine"){
+        echoOracle.fftSize = 2048;
+        const toneBuf = new Uint8Array(echoOracle.fftSize);
+
+        (function loop(){
+          tranceLoop = requestAnimationFrame(loop);
+          echoOracle.getByteTimeDomainData(toneBuf);
+
+          holoPen.fillStyle = "#000"; holoPen.fillRect(0,0,W,H);
+
+          holoPen.beginPath();
+          let x = 0, step = W/toneBuf.length;
+          for (let i=0;i<toneBuf.length;i++){
+            const v = toneBuf[i]/128.0; const y = v * H/2;
+            i ? holoPen.lineTo(x,y) : holoPen.moveTo(x,y);
+            x += step;
+          }
+          holoPen.lineTo(W, H/2);
+          const grad = holoPen.createLinearGradient(0,0,0,128);
+          grad.addColorStop(1,"#0f0"); grad.addColorStop(.5,"#ff0"); grad.addColorStop(0,"#f00");
+          holoPen.strokeStyle = grad; holoPen.stroke();
+
+          holoPen.fillStyle = "#fff";
+          holoPen.fillText("Mood: " + teleMood, 450, 200);
+          holoPen.fillText("Awareness: " + (soulAura*100).toFixed(1) + "%", 450, 225);
+          renderSoulAura(holoPen);
+          whisperIfFate(holoPen);
+        })();
+        return;
+      }
+
+      // default / bars mode
+      echoOracle.fftSize = 256;
+      const bins = echoOracle.frequencyBinCount;
+      const bands = new Uint8Array(bins);
+
+      (function loopBars(){
+        tranceLoop = requestAnimationFrame(loopBars);
+        echoOracle.getByteFrequencyData(bands);
+
+        holoPen.fillStyle = "#000"; holoPen.fillRect(0,0,W,H);
+
+        const barW = 10;
+        let x = 0;
+
+        driftX = 0; driftY = 0;
+
+        for (let i=0;i<bins;i++){
+          const h = bands[i];
+
+          const g = holoPen.createLinearGradient(0,0,0,99);
+          g.addColorStop(1,"#6b1f3d"); g.addColorStop(.5,"#ff0"); g.addColorStop(0,"#f00");
+          holoPen.fillStyle = g;
+          holoPen.fillRect(x, H - h/2, barW, h/2);
+
+          if (i === 0){
+            const f = h|0;
+            cipherPush(f);
+            windJawHz = cipherPull();
+
+            windJaw.style.top = (135 + (windJawHz/8)) + "px";
+
+            spiritOscillator.frequency.value = windJawHz^2;//
+              //Math.max(50, Math.min(3000, windJawHz*2))/2;
+
+            apexScan = Math.max(apexScan, windJawHz);
+            nadirScan = Math.min(nadirScan, windJawHz);
+            if (++sampleBeats > 60){
+              sampleBeats = 0;
+              apexLock = apexScan; nadirLock = nadirScan;
+              spanLock = Math.max(0, apexLock - nadirLock);
+              apexScan = 0; nadirScan = 1e4;
+            }
+
+            if (spanLock > 0){
+              const band = spanLock/20;
+ /*             if (windJawHz > (nadirLock + band*11) && windJawHz < (nadirLock + band*12)) driftX = 1;
+              if (windJawHz < (nadirLock + band*9 ) && windJawHz > (nadirLock + band*8 ))  driftX = -1;
+              if (windJawHz < (nadirLock + band*5 ) && windJawHz > (nadirLock + band*4 ))  driftY = 1;
+              if (windJawHz > (nadirLock + band*15) && windJawHz < (nadirLock + band*16)) driftY = -1; */
+
+              ////if (windJawHz > (apexLock - nadirLock) ) driftX = 1;
+              ////if (windJawHz > (apexLock - nadirLock) )  driftX = -1;
+              //if (windJawHz >   ((apexLock - nadirLock)/2) + nadirLock  )  driftY = 1;
+              //if (windJawHz <   ((apexLock - nadirLock)/2) + nadirLock  ) driftY = -1;
+	      if (apexLock <= 6) driftY = -1;
+	      if (apexLock > 6 && apexLock <= 13) driftX = -1;//go left
+	      if (apexLock > 13 && apexLock < 20) driftX = 1;//go right
+	      if (apexLock >= 20) driftY = 1;
+	      if (apexLock == 0) { driftY = 0; driftX = 0; }
+            }
+
+            phantomX = Math.max(0, Math.min(800, phantomX + driftX));
+            phantomY = Math.max(0, Math.min(800, phantomY + driftY));
+	    if (phantomY > 500) phantomY=500;//stay where it can be seen
+            astralSprite.style.left = phantomX + "px";
+            astralSprite.style.top  = phantomY + "px";
+
+            holoPen.fillStyle = "#fff";
+            holoPen.fillText("upper: " + apexLock, 450, 100);
+            holoPen.fillText("lower: " + nadirLock, 450, 150);
+            holoPen.fillText("jaw:   " + windJawHz, 450, 125);
+            holoPen.fillText("pos:   " + phantomX + "," + phantomY, 450, 175);
+
+            tuneTeleMood(windJawHz);
+            inscribeDream(windJawHz);
+            holoPen.fillStyle = "rgb(255,200,255)";
+            holoPen.fillText("Mood: " + teleMood, 450, 200);
+            holoPen.fillText("Awareness: " + (soulAura*100).toFixed(1) + "%", 450, 225);
+            renderSoulAura(holoPen);
+            whisperIfFate(holoPen);
+          }
+
+          x += barW + 1;
+        }
+      })();
+    }
+
+    /* ----------------- Ritual bindings (UI events) ----------------- */
+
+    // SINGLE CLICK: start mic, distortion, bars, motion
+    startRobot.addEventListener("click", () => {
+      // Force the desired settings
+      voiceSigil.value = "biquad";
+      visionSigil.value = "bars";
+      attuneVoiceSigil();
+      summonMicrophone();
+    }, { once:true });
+
+    voiceSigil.addEventListener("change", () => { attuneVoiceSigil(); });
+    visionSigil.addEventListener("change", () => {
+      cancelAnimationFrame(tranceLoop);
+      renderVisions();
+    });
+
+    // Opening cue
+    (function omen(){
+      const sig = document.createElement("h1");
+      sig.textContent = "CLICK “START TELEPATHIC ROBOT”";
+      sig.style.textAlign = "center";
+      sig.style.margin = "0";
+      document.querySelector("header").appendChild(sig);
+      setTimeout(()=>{ sig.remove(); }, 4000);
+    })();
+
+    // place sprites at boot
+    windJaw.style.top = "420px";
+    astralSprite.style.left = "300px";
+    astralSprite.style.top  = "100px";
+
+    // prepare chain object references
+    weaveVoiceChain();
+  </script>
+
+
+</body>
+</html>
